@@ -22,6 +22,7 @@
                  .then(blob => blob.json())
                  .then(data => cities.push(...data));
 
+  //function taken from stackoverflow
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
