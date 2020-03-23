@@ -18,28 +18,55 @@
     }
 
     // Regular
+    console.log("Hell No!")
 
     // Interpolated
+    console.log('I am not %s', 'poop');
 
     // Styled
+    console.log('%c I am not a peice of shit', 'font-size: 20px; color: yellow;');
 
     // warning!
+    console.warn('Stay Away.');
 
     // Error :|
+    console.error('Why so Serious!');
 
     // Info
+    console.info('This just changes the symbol');
 
     // Testing
+    console.assert(1 === -1, 'This message is displayed because the condition is false.');
 
     // clearing
+    //console.clear();
 
     // Viewing DOM Elements
+    const para = document.querySelector('p');
+    console.log(para);
+    console.dir(para);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`); //Collapsed for not showing the group items
+      console.log(`This is ${dog.name}`);
+      console.log(`This dog is ${dog.age} years old`)
+      console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('shi');
+    console.count('shi');
+    console.count('shi');
+    console.count('shiv');
+    console.count('shi');
+    console.count('shiv');
+    console.count('shiv');
 
     // timing
+    console.time("fetching-somethin'");
+    //You can actually fetch somethin' if you want
+    console.timeEnd("fetching-somethin'")
 
   </script>
 </body>
