@@ -13,10 +13,12 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
 
     // You might think we can just do something like this:
 
     // however what happens when we update that array?
+    team[2] = "Me";
 
     // now here is the problem!
 
@@ -27,12 +29,24 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+    const team1 = players.slice();
+    console.log(team1);
 
     // or create a new array and concat the old one in
+    const team2 = [].concat(players);
+    console.log(team2);
 
     // or use the new ES6 Spread
+    //const team3 = [...players];
+    //console.log(team3);
 
     // now when we update it, the original one isn't changed
+    team1[3] = "Me";
+    console.log(players);
+    team2[3] = "Me";
+    console.log(players);
+    //team3[3] = "me";
+    //console.log(players);
 
     // The same thing goes for objects, let's say we have a person object
 
@@ -43,12 +57,47 @@
     };
 
     // and think we make a copy:
+    const me = person;
+    me.roll = 80;
+    console.log(person);
 
     // how do we take a copy instead?
+    const person1 = {
+      name: 'Wes Bos',
+      age: 80
+    };
+    const me1 = Object.assign({}, person1, {roll: 80});
+    console.log(person1);
 
     // We will hopefully soon see the object ...spread
+    const me2 = {...person1};
+    me2.roll = 80;
+    console.log(person1);
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const mee = {
+      name: "I",
+      roll: {
+        major: "DATA",
+        minor: "Analyst"
+      }
+    };
+
+    const man = Object.assign({}, mee);
+    man.roll.minor = "Algorithm";
+    console.log(mee);
+
+    const mee1 = {
+      name: "I",
+      roll: {
+        major: "DATA",
+        minor: "Analyst"
+      }
+    };
+
+    const man1 = JSON.parse(JSON.stringify(mee1));
+    man1.roll.minor = "Algorithm";
+    console.log(mee1);
 
   </script>
 
