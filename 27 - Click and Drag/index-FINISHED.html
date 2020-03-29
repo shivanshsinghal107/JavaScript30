@@ -35,6 +35,35 @@
   </div>
 
 <script>
+  const slider = document.querySelector('.items');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.scrollLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.scrollLeft;
+    const walk = (x - startX) * 0.65; // the factor of 0.65 is because if there is no factor the divs moves too fast by dragging, this factor is to decrease the amount of pixel passed when the cursor moves. You can adjust that according to response of the browser of yours.
+    slider.scrollLeft = scrollLeft - walk;
+  });
 </script>
 
   </body>
